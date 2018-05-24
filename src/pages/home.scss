@@ -1,0 +1,10 @@
+.home {
+    display: flex;
+
+    > div {
+        width: 400px;
+        margin-left: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+    }
+}
