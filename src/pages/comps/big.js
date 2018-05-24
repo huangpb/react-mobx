@@ -1,5 +1,6 @@
 import React from 'react'
 import {inject} from 'mobx-react'
+import {action} from 'mobx'
 
 @inject("store")
 export default class Big extends React.Component {

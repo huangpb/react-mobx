@@ -1,6 +1,7 @@
-import {observable, computed, action, runInAction, autorun} from 'mobx';
+import {observable, computed, action, runInAction, autorun, useStrict} from 'mobx';
 import reqwest from 'reqwest'
 
+// useStrict(true)
 
 class Store {
     @observable number = 1;
@@ -15,7 +16,7 @@ class Store {
         this.number = Math.sqrt(value);
     }
 
-    @action.bound
+    @action.bound 
     add() {
         this.number++;  //用 bound 绑定后，'this' 永远指向 Store
     }
@@ -25,8 +26,10 @@ class Store {
         reqwest(params)
             .then(res => {
                 console.log(res)
-                this.name = res.name
-                this.age = res.age
+                runInAction(() => {
+                    this.name = res.name
+                    this.age = res.age
+                })
             })
             .fail(err => {
                 console.log(err)
